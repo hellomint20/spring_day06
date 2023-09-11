@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.care.root.mybatis.MemberMapper">
+   <resultMap type="com.care.root.dto.MemberDTO" id="member">
+   	<result property="id" column="id"/>
+   	<result property="pw" column="pw"/>
+   	<result property="addr" column="addr"/>
+   </resultMap>
+   
+   <select id="getMember" resultMap="member">
+		SELECT * FROM memberspring where id=#{id}
+   </select>
+   
+   <select id="getList" resultMap="member">
+   		SELECT * FROM memberspring
+   </select>
+   
+   <insert id="register">
+   		INSERT INTO memberspring values(#{id}, #{pw}, #{addr})
+   </insert>
+   
+   <update id="modify">
+   		UPDATE memberspring SET addr=#{addr} WHERE id=#{id}
+   </update>
+</mapper>
