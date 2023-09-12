@@ -23,6 +23,26 @@
 	
 	<context:component-scan base-package="com.care.root" />
 	
+	<!-- bean 등록 -->
+	<beans:bean id="memInter" class="com.care.root.interceptor.MemberInterceptor" />	
+	<beans:bean id="testInter" class="com.care.root.interceptor.TestIn" />	
+	<beans:bean id="autoLogin" class="com.care.root.interceptor.AutoLoginInterceptor" />	
 	
+	<!-- interceptor 등록 --> 
+	<interceptors>
+		<interceptor>
+			<mapping path="/index"/>
+			<beans:ref bean="autoLogin"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/test/index"/> <!-- 이 경로로 요청하면 -->
+			<beans:ref bean="testInter"/>	<!-- 빈이 사용 된다 -->
+		</interceptor>
+		<interceptor>
+			<mapping path="/member/list"/> <!-- 이 경로로 요청하면 -->
+			<mapping path="/member/logout"/> <!-- 이 경로로 요청하면 -->
+			<beans:ref bean="memInter"/>	<!-- 빈이 사용 된다 -->
+		</interceptor>
+	</interceptors>
 	
 </beans:beans>

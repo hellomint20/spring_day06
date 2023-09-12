@@ -7,6 +7,7 @@
    	<result property="id" column="id"/>
    	<result property="pw" column="pw"/>
    	<result property="addr" column="addr"/>
+   	<result property="sessionId" column="session_id"/>
    </resultMap>
    
    <select id="getMember" resultMap="member">
@@ -18,10 +19,18 @@
    </select>
    
    <insert id="register">
-   		INSERT INTO memberspring values(#{id}, #{pw}, #{addr})
+   		INSERT INTO memberspring(id, pw, addr) values(#{id}, #{pw}, #{addr})
    </insert>
    
    <update id="modify">
    		UPDATE memberspring SET addr=#{addr} WHERE id=#{id}
    </update>
+   
+   <update id="keepLogin">
+   		UPDATE memberspring SET session_id=#{sessionId} where id=#{id}
+   </update>
+   
+   <select id="getUserSessionId" resultMap="member">
+   	SELECT * FROM memberspring WHERE session_id = #{sessionId}
+   </select>
 </mapper>

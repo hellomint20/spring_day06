@@ -11,4 +11,6 @@ public interface MemberService {
 	public void register(MemberDTO dto, String[] addr);
 	public Map<String, Object> getMember(String id);
 	public void modify(MemberDTO dto, String[] addr);
+	public void keepLogin(String sessionId, String id);
+	public MemberDTO getUserSessionId(String sessionId);
 }

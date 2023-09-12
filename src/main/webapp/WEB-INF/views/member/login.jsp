@@ -14,6 +14,9 @@
 		<input type="text" name="pw"><br>
 		<input type="submit" value="login"><br>
 		<a href="${ contextPath }/member/register_view">회원가입</a>
+		
+		<br>
+		<input type="checkbox" name="autoLogin">자동로그인
 	</form>
 </body>
 </html>

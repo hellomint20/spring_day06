@@ -1,7 +1,7 @@
 package com.care.root.dto;
 
 public class MemberDTO {
-	String id, pw, addr;
+	String id, pw, addr, sessionId;
 	
 	public MemberDTO() { }
 
@@ -28,4 +28,13 @@ public class MemberDTO {
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}
+
+	public String getSessionId() {
+		return sessionId;
+	}
+
+	public void setSessionId(String sessionId) {
+		this.sessionId = sessionId;
+	}
+	
 }
