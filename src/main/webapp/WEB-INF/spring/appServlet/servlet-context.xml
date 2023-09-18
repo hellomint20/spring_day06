@@ -26,10 +26,15 @@
 	<!-- bean 등록 -->
 	<beans:bean id="memInter" class="com.care.root.interceptor.MemberInterceptor" />	
 	<beans:bean id="testInter" class="com.care.root.interceptor.TestIn" />	
-	<beans:bean id="autoLogin" class="com.care.root.interceptor.AutoLoginInterceptor" />	
+	<beans:bean id="autoLogin" class="com.care.root.interceptor.AutoLoginInterceptor" />
+	<beans:bean id="board" class="com.care.root.interceptor.BoardInterceptor" />	
 	
 	<!-- interceptor 등록 --> 
 	<interceptors>
+		<interceptor>
+			<mapping path="/board/writeForm"/>
+			<beans:ref bean="board"/>
+		</interceptor>
 		<interceptor>
 			<mapping path="/index"/>
 			<beans:ref bean="autoLogin"/>
@@ -39,6 +44,7 @@
 			<beans:ref bean="testInter"/>	<!-- 빈이 사용 된다 -->
 		</interceptor>
 		<interceptor>
+	<!--	<mapping path="/board/writeForm"/>  -->	
 			<mapping path="/member/list"/> <!-- 이 경로로 요청하면 -->
 			<mapping path="/member/logout"/> <!-- 이 경로로 요청하면 -->
 			<beans:ref bean="memInter"/>	<!-- 빈이 사용 된다 -->

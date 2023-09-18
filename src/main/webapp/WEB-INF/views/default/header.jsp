@@ -9,17 +9,19 @@
 </head>
 <body>
 <c:set var="contextPath" value="${ pageContext.request.contextPath }" />
-	<h1>day06 member</h1>
+	<h1 style="text-align: center;">s _ project</h1>
 	
-	<a href="${contextPath }/index">HOME</a>
-	<c:if test="${ login != null }">
-		<a href="${contextPath }/member/logout">LOGOUT</a>
-	</c:if>
-	<c:if test="${ login == null }">
-		<a href="${contextPath }/member/login">LOGIN</a>
-	</c:if>
-	<a href="${contextPath }/member/list">MEMBERS</a>
-	
+	<div style="text-align: right;">
+		<a href="${contextPath }/index">HOME</a>
+		<c:if test="${ login != null }">
+			<a href="${contextPath }/member/logout">LOGOUT</a>
+		</c:if>
+		<c:if test="${ login == null }">
+			<a href="${contextPath }/member/login">LOGIN</a>
+		</c:if>
+		<a href="${contextPath }/member/list">MEMBERS</a>
+		<a href="${contextPath }/board/boardAllList">board</a>
+	</div>
 	<hr>
 </body>
 </html>
