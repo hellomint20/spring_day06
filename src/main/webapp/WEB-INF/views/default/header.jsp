@@ -9,7 +9,7 @@
 </head>
 <body>
 <c:set var="contextPath" value="${ pageContext.request.contextPath }" />
-	<h1 style="text-align: center;">s _ project</h1>
+	<h1>s _ project</h1>
 	
 	<div style="text-align: right;">
 		<a href="${contextPath }/index">HOME</a>

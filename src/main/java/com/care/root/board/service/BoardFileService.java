@@ -7,4 +7,5 @@ public interface BoardFileService {
 	
 	public String getMessage(String msg, String url);
 	public String saveFile(MultipartFile file);
+	public void deleteImage(String fileName);
 }

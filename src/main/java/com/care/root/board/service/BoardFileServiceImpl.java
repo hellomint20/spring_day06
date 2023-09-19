@@ -15,7 +15,6 @@ public class BoardFileServiceImpl implements BoardFileService {
 		message += "location.href='"+url+"';</script>";
 		return message;
 	}
-	
 	public String saveFile(MultipartFile file) {
 		SimpleDateFormat fo = new SimpleDateFormat("yyyyMMddHHmmss-");
 		String sysFileName = fo.format(new Date());
@@ -27,5 +26,9 @@ public class BoardFileServiceImpl implements BoardFileService {
 			e.printStackTrace();
 		}
 		return sysFileName;
+	}
+	public void deleteImage(String fileName) {
+		File file = new File(IMAGE_REPO+"/"+fileName);
+		file.delete();
 	}
 }

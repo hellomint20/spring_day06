@@ -35,7 +35,13 @@
 				</c:forEach>
 			</c:otherwise>
 		</c:choose>
-
+		<tr>
+			<td colspan="6">
+				<c:forEach var="n" begin="1" end="${repeat }">
+					<a href="boardAllList?num=${ n }">${ n }</a>
+				</c:forEach>
+			</td>
+		</tr>
 		<tr>
 			<td style="text-align: right;" colspan="6"><a href="writeForm">글작성</a></td>
 		</tr>

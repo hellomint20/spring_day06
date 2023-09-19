@@ -5,7 +5,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
+import java.util.Map;
 
+import javax.print.PrintService;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,13 +32,14 @@ public class BoardController {
 	public BoardController() {
 		System.out.println("board con ½ÇÇà");
 	}
-	
 	@GetMapping("boardAllList")
-	public String boardAllList(Model model) {
-		model.addAttribute("list", bs.boardAllList());
+	public String boardAllList(Model model, @RequestParam(required = false, defaultValue = "1") int num) {
+		Map<String, Object> map = bs.boardAllList(num);
+		
+		model.addAttribute("list", map.get("list"));
+		model.addAttribute("repeat", map.get("repeat"));
 		return "board/boardAllList";
 	}
-	
 	@GetMapping("writeForm")
 	public String writeForm() {
 		return "board/writeForm";
@@ -65,7 +68,24 @@ public class BoardController {
 		in.close();
 	}
 	@GetMapping("modify_form")
-	public String modifyForm() {
+	public String modifyForm(@RequestParam int writeNo, Model model) {
+		model.addAttribute("content", bs.getContent(writeNo));
 		return "board/modifyForm";
+	}
+	@PostMapping("modify")
+	public void modify(BoardDTO dto,  @RequestParam(required = false) MultipartFile file,
+			HttpServletResponse res) throws Exception {
+		String msg = bs.modify(dto, file);
+		res.setContentType("text/html; charset=utf-8");
+		PrintWriter out = res.getWriter();
+		out.print( msg );
+		
+	}
+	@GetMapping("delete")
+	public void delete(@RequestParam int writeNo,@RequestParam String fileName, HttpServletResponse res) throws Exception {
+		String msg = bs.delete(writeNo, fileName);
+		res.setContentType("text/html; charset=utf-8");
+		PrintWriter out = res.getWriter();
+		out.print(msg);
 	}
 }

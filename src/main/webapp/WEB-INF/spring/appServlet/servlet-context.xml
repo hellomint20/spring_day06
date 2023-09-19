@@ -33,6 +33,7 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/board/writeForm"/>
+			<mapping path="/board/content_view"/>
 			<beans:ref bean="board"/>
 		</interceptor>
 		<interceptor>

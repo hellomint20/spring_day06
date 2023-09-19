@@ -32,6 +32,5 @@
 		<input type="submit" value="글쓰기">
 		<a href="boardAllList">목록 이동</a>
 	</form>
-
 </body>
 </html>
